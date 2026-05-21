@@ -4,9 +4,19 @@ import numpy as np
 from PIL import Image
 
 # Load model once and cache it
+from pathlib import Path
+
+BASE_DIR = Path(__file__).parent
+
 @st.cache_resource
 def load_model():
-    return tf.keras.models.load_model("trained_plant_disease_model.keras")
+    model_path = BASE_DIR / "trained_plant_disease_model.keras"
+
+    if not model_path.exists():
+        st.error(f"Model file not found: {model_path}")
+        st.stop()
+
+    return tf.keras.models.load_model(model_path)
 
 # Function to load and predict the image
 def model_prediction(test_image):
@@ -16,8 +26,6 @@ def model_prediction(test_image):
     input_arr = np.array([input_arr])  # Convert single image to batch
     predictions = model.predict(input_arr)
     return np.argmax(predictions)  # Return index of max element
-
-from pathlib import Path
 
 BASE_DIR = Path(__file__).parent
 image_path = BASE_DIR / "Diseases.png"
