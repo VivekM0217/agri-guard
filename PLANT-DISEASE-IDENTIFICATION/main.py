@@ -44,21 +44,21 @@ if app_mode == "HOME":
     )
     
     # Features Section
-st.markdown("### Features")
-
-col1, col2, col3 = st.columns(3)
-
-with col1:
-    st.subheader("Disease Detection")
-    st.write("Identify plant diseases with AI.")
-
-with col2:
-    st.subheader("Actionable Insights")
-    st.write("Get disease details and remedies.")
-
-with col3:
-    st.subheader("Real-Time Results")
-    st.write("Receive instant predictions.")
+    st.markdown("### Features")
+    
+    col1, col2, col3 = st.columns(3)
+    
+    with col1:
+        st.subheader("Disease Detection")
+        st.write("Identify plant diseases with AI.")
+    
+    with col2:
+        st.subheader("Actionable Insights")
+        st.write("Get disease details and remedies.")
+    
+    with col3:
+        st.subheader("Real-Time Results")
+        st.write("Receive instant predictions.")
 
     # Instructions Section
     st.markdown("### How It Works")
