@@ -44,17 +44,21 @@ if app_mode == "HOME":
     )
     
     # Features Section
-    st.markdown("### Features")
-    col1, col2, col3 = st.columns([1, 1, 1])
-    with col1:
-        st.image("image1.png", caption="Disease Detection", use_column_width=True)
-        st.write("Identify plant diseases with AI.")
-    with col2:
-        st.image("image3.1.png", caption="Actionable Insights", use_column_width=True)
-        st.write("Get disease details and remedies.")
-    with col3:
-        st.image("image2.1.png", caption="Real-Time Results", use_column_width=True)
-        st.write("Receive instant predictions.")
+st.markdown("### Features")
+
+col1, col2, col3 = st.columns(3)
+
+with col1:
+    st.subheader("Disease Detection")
+    st.write("Identify plant diseases with AI.")
+
+with col2:
+    st.subheader("Actionable Insights")
+    st.write("Get disease details and remedies.")
+
+with col3:
+    st.subheader("Real-Time Results")
+    st.write("Receive instant predictions.")
 
     # Instructions Section
     st.markdown("### How It Works")
