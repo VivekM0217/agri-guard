@@ -17,10 +17,15 @@ def model_prediction(test_image):
     predictions = model.predict(input_arr)
     return np.argmax(predictions)  # Return index of max element
 
-# Banner Image
-img = Image.open("Diseases.png")
-st.image(img, use_column_width=True)
+from pathlib import Path
 
+BASE_DIR = Path(__file__).parent
+image_path = BASE_DIR / "Diseases.png"
+
+if image_path.exists():
+    st.image(Image.open(image_path), use_column_width=True)
+else:
+    st.warning(f"Image not found: {image_path}")
 # App Modes
 app_mode = st.selectbox("Select a Page", ["HOME", "DISEASE RECOGNITION"])
 
