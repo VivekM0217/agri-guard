@@ -18,13 +18,20 @@ from sklearn.preprocessing import LabelEncoder
 
 # Display Images
 # import Image from pillow to open images
+from pathlib import Path
 from PIL import Image
-img = Image.open("crop.png")
-# display image using streamlit
-# width is used to set the width of an image
-st.image(img)
 
-df= pd.read_csv('Crop_recommendation.csv')
+image_path = Path(__file__).parent / "crop.png"
+
+if image_path.exists():
+    img = Image.open(image_path)
+    st.image(img)
+else:
+    st.warning("crop.png not found")
+
+BASE_DIR = Path(__file__).parent
+
+df = pd.read_csv(BASE_DIR / "Crop_recommendation.csv")
 
 #features = df[['temperature', 'humidity', 'ph', 'rainfall']]
 X = df[['N', 'P','K','temperature', 'humidity', 'ph', 'rainfall']]
